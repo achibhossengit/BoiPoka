@@ -6,7 +6,7 @@ import {
 } from "react-icons/ai";
 import { FiBookOpen } from "react-icons/fi";
 import { BiCategoryAlt, BiStar } from "react-icons/bi";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 
 const BookCart = ({ book }) => {
   const {

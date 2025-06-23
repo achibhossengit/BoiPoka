@@ -7,6 +7,7 @@ import {
   FaBookReader,
 } from "react-icons/fa";
 import { addToStoreDB } from "../../utilities/addToDB";
+import { ToastContainer } from "react-toastify";
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -52,6 +53,7 @@ const BookDetails = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <ToastContainer></ToastContainer>
       <div className="flex flex-col md:flex-row gap-8 bg-white rounded-lg shadow-md p-6">
         {/* Book Cover */}
         <div className="w-full md:w-1/2 lg:w-1/3 flex bg-base-200 justify-center items-center py-5">
