@@ -15,28 +15,41 @@ import BookCart from "../../components/Books/BookCart";
 const ReadList = () => {
   const books = useLoaderData();
   const [readlist, setReadlist] = useState([]);
+  const [wishlist, setWishlist] = useState([]);
   const [sortType, setSortType] = useState("");
   useEffect(() => {
-    const readIdlist = getStoredBooks();
-    const convertedIdList = readIdlist.map((id) => parseInt(id));
-    const readbooks = books.filter((book) =>
-      convertedIdList.includes(book.bookId)
+    const readIdlist = getStoredBooks('readlist');
+    const wishIdlist = getStoredBooks('wishlist');
+    const convertedReadIdList = readIdlist.map((id) => parseInt(id));
+    const convertedWishIdList = wishIdlist.map((id) => parseInt(id));
+    const readedBooks = books.filter((book) =>
+      convertedReadIdList.includes(book.bookId)
     );
-    setReadlist(readbooks);
+    const wishBooks = books.filter((book) =>
+      convertedWishIdList.includes(book.bookId)
+    );
+    setReadlist(readedBooks);
+    setWishlist(wishBooks);
   }, []);
 
   const handleSort = (type) => {
     setSortType(type);
 
     if (type === "page") {
-      const sortedByPage = [...readlist].sort(
+      const sortedReadlist = [...readlist].sort(
         (a, b) => a.totalPages - b.totalPages
       );
-      setReadlist(sortedByPage);
+      setReadlist(sortedReadlist);
+      const sortedWishList = [...wishlist].sort(
+        (a, b) => a.totalPages - b.totalPages
+      );
+      setWishlist(sortedWishList);
     }
     if (type === "rating") {
-      const sortedByPage = [...readlist].sort((a, b) => a.rating - b.rating);
-      setReadlist(sortedByPage);
+      const sortedReadlist = [...readlist].sort((a, b) => a.rating - b.rating);
+      setReadlist(sortedReadlist);
+      const sortedWishList = [...wishlist].sort((a, b) => a.rating - b.rating);
+      setWishlist(sortedWishList);
     }
   };
 
@@ -98,7 +111,9 @@ const ReadList = () => {
           ))}
         </TabPanel>
         <TabPanel>
-          <h2>Any content 2</h2>
+          {wishlist.map((book) => (
+            <BookCart key={book.bookId} book={book} />
+          ))}
         </TabPanel>
       </Tabs>
     </div>

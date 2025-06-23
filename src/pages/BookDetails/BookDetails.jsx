@@ -26,7 +26,10 @@ const BookDetails = () => {
   } = book;
 
   const handleAddtoReadlist = (id) => {
-    addToStoreDB(id)
+    addToStoreDB(id, "readlist")
+  }
+  const handleAddtoWishlist = (id) => {
+    addToStoreDB(id, 'wishlist')
   }
 
   // Function to render star ratings
@@ -121,7 +124,7 @@ const BookDetails = () => {
             <button onClick={()=>handleAddtoReadlist(id)} className="cursor-pointer flex items-center px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors shadow-md">
               <FaBookReader className="mr-2" /> Add to Readlist
             </button>
-            <button className="flex items-center px-6 py-3 border border-green-500 text-green-500 rounded-lg hover:bg-green-50 transition-colors">
+            <button onClick={()=>handleAddtoWishlist(id)} className="flex items-center px-6 py-3 border border-green-500 text-green-500 rounded-lg hover:bg-green-50 transition-colors">
               <FaBookmark className="mr-2" /> Add to Wishlist
             </button>
           </div>

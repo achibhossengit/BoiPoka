@@ -4,12 +4,12 @@ import { FaBook, FaHome, FaBookOpen, FaList } from "react-icons/fa";
 const Navbar = () => {
   const navLinks = [
     { name: "Home", path: "/", icon: <FaHome className="mr-1" /> },
-    { name: "Listed Books", path: "/books", icon: <FaList className="mr-1" /> },
     {
       name: "Read list",
       path: "/readlist",
       icon: <FaBookOpen className="mr-1" />,
     },
+    { name: "Listed Books", path: "/books", icon: <FaList className="mr-1" /> },
   ];
 
   return (

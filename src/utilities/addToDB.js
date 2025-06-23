@@ -1,16 +1,16 @@
-export const getStoredBooks = () => {
-  const storedBooks = localStorage.getItem("readlist");
+export const getStoredBooks = (key) => {
+  const storedBooks = localStorage.getItem(key);
   return storedBooks ? JSON.parse(storedBooks) : [];
 };
 
-export const addToStoreDB = (id) => {
-  const books = getStoredBooks();
+export const addToStoreDB = (id, key) => {
+  const books = getStoredBooks(key);
 
   if (books.includes(id)) {
-    alert("This book is already in your readlist!");
+    alert(`This book is already in your ${key}`);
   } else {
     books.push(id);
-    localStorage.setItem("readlist", JSON.stringify(books));
+    localStorage.setItem(key, JSON.stringify(books));
     console.log(`Book ID ${id} added to readlist`, books);
   }
 };
