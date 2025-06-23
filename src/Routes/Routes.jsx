@@ -3,6 +3,7 @@ import Root from "../pages/Root/Root";
 import Home from "../pages/Home/Home";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import BookDetails from "../pages/BookDetails/BookDetails";
+import ReadList from "../pages/ReadList/ReadList";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +22,14 @@ export const router = createBrowserRouter([
             "https://raw.githubusercontent.com/ProgrammingHero1/boi-poka-Book-Vibe-Resources/refs/heads/main/data/booksData.json"
           ).then((res) => res.json()),
         Component: BookDetails,
+      },
+      {
+        path: "/readlist",
+        loader: () =>
+          fetch(
+            "https://raw.githubusercontent.com/ProgrammingHero1/boi-poka-Book-Vibe-Resources/refs/heads/main/data/booksData.json"
+          ).then((res) => res.json()),
+        Component: ReadList,
       },
     ],
   },

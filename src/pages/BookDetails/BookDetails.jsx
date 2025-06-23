@@ -6,6 +6,7 @@ import {
   FaBookmark,
   FaBookReader,
 } from "react-icons/fa";
+import { addToStoreDB } from "../../utilities/addToDB";
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -23,6 +24,10 @@ const BookDetails = () => {
     publisher,
     yearOfPublishing,
   } = book;
+
+  const handleAddtoReadlist = (id) => {
+    addToStoreDB(id)
+  }
 
   // Function to render star ratings
   const renderStars = (rating) => {
@@ -113,7 +118,7 @@ const BookDetails = () => {
 
           {/* Action Buttons */}
           <div className="flex flex-wrap gap-4 pt-4 border-t border-gray-200">
-            <button className="flex items-center px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors shadow-md">
+            <button onClick={()=>handleAddtoReadlist(id)} className="cursor-pointer flex items-center px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors shadow-md">
               <FaBookReader className="mr-2" /> Add to Readlist
             </button>
             <button className="flex items-center px-6 py-3 border border-green-500 text-green-500 rounded-lg hover:bg-green-50 transition-colors">

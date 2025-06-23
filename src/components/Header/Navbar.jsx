@@ -6,8 +6,8 @@ const Navbar = () => {
     { name: "Home", path: "/", icon: <FaHome className="mr-1" /> },
     { name: "Listed Books", path: "/books", icon: <FaList className="mr-1" /> },
     {
-      name: "Pages to Read",
-      path: "/reading-list",
+      name: "Read list",
+      path: "/readlist",
       icon: <FaBookOpen className="mr-1" />,
     },
   ];
